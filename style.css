@@ -2,14 +2,15 @@ body {
     display: flex;
     justify-content: center;
     font-size: xx-large;
+    background-color: black;
 }
 
-#container {
+form {
     display: flex;
     flex-direction: column;
     min-width: 400px;
     min-height: 600px;
-    border: 3px solid black;
+    border: 5px solid gray;
     border-radius: 5px;
 }
 
@@ -24,16 +25,17 @@ body {
     flex: auto;
 }
 
-.button {
+button {
     display: flex;
     border: 1px solid black;
     justify-content: center;
     align-items: center;
     flex: 1;
+    font-size: xx-large;
 }
 
 #zero {
-    flex: 2;
+    flex: 2.16;
 }
 
 .number {
