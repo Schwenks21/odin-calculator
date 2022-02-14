@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    min-height: 600px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+#display {
+    min-height: 100px;
+    min-width: 400px;
+    background-color: black;
+}
+
+.row {
+    display: flex;
+    flex: auto;
+}
+
+.button {
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+#zero {
+    flex: 2;
+}
+
+.number {
+    background-color: slategray;
+    color: white;
+}
+
+.gray {
+    background-color: gray;
+}
+
+.operator {
+    background-color:orange;
+    color: white;
+}
