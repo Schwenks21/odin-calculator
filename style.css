@@ -49,10 +49,6 @@ button {
     border-radius: 5px;
 }
 
-#zero {
-    flex: 2.3;
-}
-
 .decimal,
 .number {
     background-color: #34495E;
@@ -73,7 +69,8 @@ button {
 .operator,
 .number,
 .decimal,
-.equals {
+.equals,
+.backspace {
     transition-duration: 0.5s;
 }
 
@@ -81,7 +78,8 @@ button {
 .operator:active,
 .number:active,
 .decimal:active,
-.equals:active {
+.equals:active,
+.backspace:active {
     transform: translateY(10px);
 }
 
@@ -97,4 +95,13 @@ button {
 .operator:hover,
 .equals:hover {
     background-color: #E59866;
+}
+
+.backspace:hover {
+    background-color: #D98880;
+}
+
+.backspace {
+    background-color: #C0392B;
+    color: white;
 }
