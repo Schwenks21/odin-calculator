@@ -6,8 +6,7 @@ const clearButton = document.querySelector('#clear');
 const negativeButton = document.querySelector('#negative');
 const percentageButton = document.querySelector('#percentage');
 let displayValue = "";
-let firstNumber = "";
-let secondNumber = "";
+let currentNumber = "";
 let operatorName = "";
 
 function addNumbers (x, y) {
@@ -28,35 +27,37 @@ function divideNumbers (x, y) {
 
 function operate (operator, x, y) {
     operator = operatorName;
-    x = firstNumber;
+    //confirm both variables are still numbers to prevent errors
+    x = Number(currentNumber);
     y = Number(displayValue);
     switch (operator) {
         case "add":
-            displayValue = addNumbers(x, y);
-            display.textContent = displayValue;
+            display.textContent = addNumbers(x,y);
             break;
         case "subtract":
-            displayValue = subtractNumbers(x, y);
-            display.textContent = displayValue;
+            display.textContent = subtractNumbers(x,y);
             break;
         case "multiply":
-            displayValue = multiplyNumbers(x, y);
-            display.textContent = displayValue;
+            display.textContent = multiplyNumbers(x,y);
             break;
         case "divide":
-            displayValue = divideNumbers(x, y);
-            display.textContent = displayValue;
+            display.textContent = divideNumbers(x,y);
             break;
     }
+    //set currentNumber value to calculated value and clear operatorName and
+    //displayValue for next user inputs
+    currentNumber = display.textContent;
+    operatorName = "";
+    displayValue = "";
 }
-//display number button when clicked
 
+//display number button when clicked
 numberButtons.forEach(button => {
     button.addEventListener('click', populateDisplay)
 });
 
-//if input is 0, make display equal to number button clicked.  If input is
-//already a number, then add that number into a string"
+//if displayValue is empty then displayValue equals the value of number button
+//pressed.  If not empty then add numbers to string.
 function populateDisplay() {
     if (!displayValue) {
         displayValue = this.textContent;
@@ -66,25 +67,34 @@ function populateDisplay() {
     display.textContent = displayValue;
 }
 
-//when an operator button is clicked, store the number, clear the input, and 
-//store the operator
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        firstNumber = Number(displayValue);
+        //if a number and operator are already stored, then operate calculation
+        if(currentNumber && operatorName) {
+            operate();
+        //if currentNumber already exists from previous calculation, then simply
+        //reset displayValue for next calculation
+        } else if (currentNumber) {
+            displayValue = "";
+        //if no values are stored simply store displayValue in currentNumber and 
+        //reset displayValue
+        } else {
+            currentNumber = Number(displayValue)
+            displayValue = "";
+        };
         operatorName = button.id;
-        displayValue = "";
     });
 });
 
 //equal button will operate with given operator and value
-//firstNumber, if not empty, and current input value
+//currentNumber, if not empty, and current input value
 equalsButton.addEventListener('click', operate);
 
 //clear button when clicked will clear display and input values
 clearButton.addEventListener('click', () => {
     display.innerText = 0;
     displayValue = "";
-    firstNumber = "";
+    currentNumber = "";
     operatorName = "";
 })
 
