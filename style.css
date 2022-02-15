@@ -71,7 +71,7 @@ button {
 .decimal,
 .equals,
 .backspace {
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
 }
 
 .btn:active,
@@ -80,7 +80,7 @@ button {
 .decimal:active,
 .equals:active,
 .backspace:active {
-    transform: translateY(10px);
+    transform: translateY(5px);
 }
 
 .number:hover,
