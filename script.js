@@ -5,6 +5,7 @@ const equalsButton = document.querySelector('#equals')
 const clearButton = document.querySelector('#clear');
 const negativeButton = document.querySelector('#negative');
 const percentageButton = document.querySelector('#percentage');
+const decimalButton = document.querySelector('#decimal');
 let displayValue = "";
 let currentNumber = "";
 let operatorName = "";
@@ -99,11 +100,32 @@ clearButton.addEventListener('click', () => {
 })
 
 negativeButton.addEventListener('click', () => {
-    displayValue = displayValue*-1;
-    display.innerText = displayValue;
+    if (displayValue) {
+        displayValue = Number(displayValue)*-1;
+        display.innerText = displayValue;
+    } else {
+        currentNumber = Number(currentNumber)*-1;
+        display.innerText = currentNumber;
+    }
 })
 
 percentageButton.addEventListener('click', () => {
-    displayValue = displayValue/100;
-    display.innerText = displayValue;
+    if (displayValue) {
+        displayValue = Number(displayValue)/100;
+        display.innerText = displayValue;
+    } else {
+        currentNumber = Number(currentNumber)/100;
+        display.innerText = currentNumber;
+    }
+})
+
+decimalButton.addEventListener('click', () => {
+    if (displayValue.toString().indexOf('.') === -1) {
+        if (!displayValue) {
+            displayValue = ".";
+        } else {
+            displayValue += ".";
+        }
+        display.textContent = displayValue;
+    }
 })
