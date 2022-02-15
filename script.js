@@ -120,6 +120,8 @@ percentageButton.addEventListener('click', () => {
     }
 })
 
+//Decimal button function only allows user to input decimal if one
+//doesn't already exist
 decimalButton.addEventListener('click', () => {
     if (displayValue.toString().indexOf('.') === -1) {
         if (!displayValue) {
@@ -131,6 +133,7 @@ decimalButton.addEventListener('click', () => {
     }
 })
 
+//add backspace button
 backspaceButton.addEventListener('click', () => {
     if(displayValue) {
         displayValue = displayValue.toString().slice(0,-1);
@@ -140,3 +143,5 @@ backspaceButton.addEventListener('click', () => {
         display.innerText = currentNumber;
     }
 })
+
+//add keyboard support
