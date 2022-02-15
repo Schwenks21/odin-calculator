@@ -47,6 +47,7 @@ button {
     flex: 2.16;
 }
 
+#decimal,
 .number {
     background-color: slategray;
     color: white;
