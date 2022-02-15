@@ -6,6 +6,7 @@ const clearButton = document.querySelector('#clear');
 const negativeButton = document.querySelector('#negative');
 const percentageButton = document.querySelector('#percentage');
 const decimalButton = document.querySelector('#decimal');
+const backspaceButton = document.querySelector('#backspace')
 let displayValue = "";
 let currentNumber = "";
 let operatorName = "";
@@ -127,5 +128,15 @@ decimalButton.addEventListener('click', () => {
             displayValue += ".";
         }
         display.textContent = displayValue;
+    }
+})
+
+backspaceButton.addEventListener('click', () => {
+    if(displayValue) {
+        displayValue = displayValue.toString().slice(0,-1);
+        display.innerText = displayValue;
+    } else {
+        currentNumber = currentNumber.toString().slice(0,-1);
+        display.innerText = currentNumber;
     }
 })
