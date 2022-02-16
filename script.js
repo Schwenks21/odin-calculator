@@ -28,10 +28,6 @@ function divideNumbers (x, y) {
 }
 
 function operate (operator, x, y) {
-    operator = operatorName;
-    //confirm both variables are still numbers to prevent errors
-    x = Number(currentNumber);
-    y = Number(displayValue);
     switch (operator) {
         case "add":
             display.textContent = addNumbers(x,y);
@@ -51,9 +47,6 @@ function operate (operator, x, y) {
     currentNumber = display.textContent;
     operatorName = "";
     displayValue = "";
-    console.log('currentNumber: ' + currentNumber);
-    console.log('displayValue: ' + displayValue);
-    console.log('operatorName: ' + operatorName);
 }
 
 //display number button when clicked
@@ -70,16 +63,15 @@ function populateDisplay() {
         displayValue += this.textContent;
     }
     display.textContent = displayValue;
-    console.log('currentNumber: ' + currentNumber);
-    console.log('displayValue: ' + displayValue);
-    console.log('operatorName: ' + operatorName);
 }
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
         //if a number and operator are already stored, then operate calculation
         if(currentNumber && operatorName) {
-            operate();
+            operate(operatorName, Number(currentNumber), Number(displayValue));
+        //if two numbers are stored without an operator, then override the old value
+        //with the new display number and clear the display number
         } else if (!operatorName && currentNumber && displayValue) {
             currentNumber = displayValue;
             displayValue = '';
@@ -100,7 +92,7 @@ operatorButtons.forEach(button => {
 //equal button will operate with given operator and value
 //currentNumber, if not empty, and current input value
 equalsButton.addEventListener('click', () => {
-    operate();
+    operate(operatorName, Number(currentNumber), Number(displayValue));
 });
 
 //clear button when clicked will clear display and input values
