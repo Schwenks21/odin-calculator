@@ -51,6 +51,9 @@ function operate (operator, x, y) {
     currentNumber = display.textContent;
     operatorName = "";
     displayValue = "";
+    console.log('currentNumber: ' + currentNumber);
+    console.log('displayValue: ' + displayValue);
+    console.log('operatorName: ' + operatorName);
 }
 
 //display number button when clicked
@@ -67,6 +70,9 @@ function populateDisplay() {
         displayValue += this.textContent;
     }
     display.textContent = displayValue;
+    console.log('currentNumber: ' + currentNumber);
+    console.log('displayValue: ' + displayValue);
+    console.log('operatorName: ' + operatorName);
 }
 
 operatorButtons.forEach(button => {
@@ -74,6 +80,9 @@ operatorButtons.forEach(button => {
         //if a number and operator are already stored, then operate calculation
         if(currentNumber && operatorName) {
             operate();
+        } else if (!operatorName && currentNumber && displayValue) {
+            currentNumber = displayValue;
+            displayValue = '';
         //if currentNumber already exists from previous calculation, then simply
         //reset displayValue for next calculation
         } else if (currentNumber) {
@@ -90,7 +99,9 @@ operatorButtons.forEach(button => {
 
 //equal button will operate with given operator and value
 //currentNumber, if not empty, and current input value
-equalsButton.addEventListener('click', operate);
+equalsButton.addEventListener('click', () => {
+    operate();
+});
 
 //clear button when clicked will clear display and input values
 clearButton.addEventListener('click', () => {
